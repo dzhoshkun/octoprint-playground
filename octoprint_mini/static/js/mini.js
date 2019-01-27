@@ -10,6 +10,13 @@ $(function() {
         // this will hold the URL entered in the text field
         self.newUrl = ko.observable();
 
+        self.deviceSpeed = ko.observable(0.0);
+
+        self.sendDeviceSpeedCommand = function() {
+            // TODO
+            OctoPrint.printer.setDeviceSpeed(self.deviceSpeed());
+        };
+
         // this will be called when the user clicks the "Go" button and set the iframe's URL to
         // the entered URL
         self.goToUrl = function() {
