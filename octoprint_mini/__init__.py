@@ -1,10 +1,10 @@
 # coding=utf-8
 from __future__ import absolute_import
 
-import octoprint.plugin
+from octoprint.plugin import StartupPlugin, TemplatePlugin
 
 
-class MiniPlugin(octoprint.plugin.StartupPlugin):
+class MiniPlugin(StartupPlugin, TemplatePlugin):
 
 	def on_after_startup(self):
 		self._logger.info("Mini World!")
