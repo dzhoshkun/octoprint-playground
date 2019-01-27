@@ -2,11 +2,11 @@
 from __future__ import absolute_import
 
 from octoprint.plugin import (
-	StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin
+	StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin, AssetPlugin
 )
 
 
-class MiniPlugin(StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin):
+class MiniPlugin(StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin, AssetPlugin):
 
 	def on_after_startup(self):
 		self._logger.info("Mini World! (more: %s)" % self._settings.get(["url"]))
@@ -22,6 +22,11 @@ class MiniPlugin(StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin):
 
 	def on_shutdown(self):
 		self._logger.info("Mini URL: %s" % self._settings.get(["url"]))
+
+	def get_assets(self):
+		return dict(
+			js=["js/mini.js"]
+		)
 
 
 __plugin_implementation__ = MiniPlugin()
