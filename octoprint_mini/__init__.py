@@ -14,5 +14,11 @@ class MiniPlugin(StartupPlugin, TemplatePlugin, SettingsPlugin):
 	def get_settings_defaults(self):
 		return dict(url="https://en.wikipedia.org/wiki/Hello_world")
 
+	def get_template_configs(self):
+		return [
+			dict(type="navbar", custom_bindings=False),
+			dict(type="settings", custom_bindings=False)
+		]
+
 
 __plugin_implementation__ = MiniPlugin()
