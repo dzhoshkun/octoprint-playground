@@ -13,8 +13,11 @@ $(function() {
         self.deviceSpeed = ko.observable(0.0);
 
         self.sendDeviceSpeedCommand = function() {
-            // TODO
-            OctoPrint.printer.setDeviceSpeed(self.deviceSpeed());
+            var url = OctoPrint.getBlueprintUrl("mini") + "echo";
+            OctoPrint.getWithQuery(url, {"text": "This is Mini", "no-other-one": "Another invalid one"})
+                .done(function(response) {
+                    // do something with the response
+                });
         };
 
         // this will be called when the user clicks the "Go" button and set the iframe's URL to

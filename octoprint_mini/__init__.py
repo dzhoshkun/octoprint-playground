@@ -11,7 +11,7 @@ class MiniPlugin(StartupPlugin, TemplatePlugin, SettingsPlugin, ShutdownPlugin, 
 
 	@BlueprintPlugin.route('/echo', methods=['GET'])
 	def my_echo(self):
-		print('DZHOSHKUN', 'got', flask.request.values)
+		print('DZHOSHKUN got following request: {}'.format(flask.request.values))
 		if "text" not in flask.request.values:
 			return flask.make_response("Expected a text to echo back.", 400)
 		return flask.request.values["text"]
